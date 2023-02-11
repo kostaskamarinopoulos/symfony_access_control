@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New InterestGroup{% endblock %}
+
+{% block body %}
+    <h1>Create new InterestGroup</h1>
+
+    {{ include('interest_group/_form.html.twig') }}
+
+    <a href="{{ path('app_interest_group_index') }}">back to list</a>
+{% endblock %}
