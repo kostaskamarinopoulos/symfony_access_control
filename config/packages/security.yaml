@@ -36,6 +36,8 @@ security:
     access_control:
         - { path: ^/user/[0-9]+/edit, roles: ROLE_ADMIN }
         - { path: ^/user/new, roles: ROLE_ADMIN }
+        - { path: ^/group/[0-9]+/edit, roles: ROLE_ADMIN }
+        - { path: ^/group/new, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

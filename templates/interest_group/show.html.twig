@@ -28,5 +28,7 @@
 
     <a href="{{ path('app_interest_group_edit', {'id': interest_group.id}) }}">edit</a>
 
-    {{ include('interest_group/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('interest_group/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
