@@ -29,6 +29,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: "user")]
+    private $groupParticipations;
+
     public function getId(): ?int
     {
         return $this->id;

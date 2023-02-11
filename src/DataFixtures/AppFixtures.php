@@ -6,8 +6,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\User;
 use App\Entity\Role;
-use App\Entity\Group;
+use App\Entity\InterestGroup;
 use App\Entity\UserRole;
+use App\Entity\Participation;
 
 class AppFixtures extends Fixture
 {
@@ -18,12 +19,17 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < count($names); $i++) {
             $user = new User();
             $user->setName($names[$i]);
+            $user->setPassword('$2y$13$yshMNQxN./OBU9msmbcm6ujXzEhi5mLfOHE0HJm1TLanirr5SSNhu');
+            $user->setRoles(['USER']);
 
-            $group = new Group();
+            $manager->persist($user);
+
+            $group = new InterestGroup();
             $group->setName($names[$i].'Group');
+$manager->persist($group);
 
-            $userGroup = new UserCategory();
-            $userGroup->setGroup($group);
+            $userGroup = new Participation();
+            $userGroup->setInterestGroup($group);
             $userGroup->setUser($user);
             $manager->persist($userGroup);
 
