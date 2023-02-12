@@ -19,6 +19,11 @@ name: boss, password: 123456
 normal user(not admin): 
 name: test, password: 123456
 
+# Setup
+- cp .env.example .env
+- composer install
+- symfony server:start -d
+
 ## DB Model
 ![My Image](DB_MODEL.png?raw=true)
 
