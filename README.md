@@ -1,3 +1,16 @@
+## APIs
+All users('GET'): `/user`
+Create('GET', 'POST'): `/user/new`
+Show('GET'): `/user/{id}`
+Edit('GET', 'POST'): `/user/{id}/edit`
+Delete('POST'): `/user/{id}`
+
+All groups('GET'): `/interest/group`
+Create('GET', 'POST'): `/interest/group/new`
+Show('GET'): `/interest/group/{id}`
+Edit('GET', 'POST'): `/interest/group/{id}/edit`
+Delete('POST'): `/interest/group/{id}`
+
 ## Data
 `dummy_data.sql` can be imported in your database
 admin user: 
