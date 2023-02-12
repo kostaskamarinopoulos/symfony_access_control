@@ -19,6 +19,13 @@
                 <th>Roles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
+            <tr>
+            <th>Groups</th>
+            {% for member in user.userParticipations %}
+                <td>{{member.interestGroup.name}}</td>
+            {% endfor %}
+                
+            </tr>
         </tbody>
     </table>
 

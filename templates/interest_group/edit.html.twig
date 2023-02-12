@@ -9,5 +9,9 @@
 
     <a href="{{ path('app_interest_group_index') }}">back to list</a>
 
-    {{ include('interest_group/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('interest_group/_delete_form.html.twig') }}
+    {% endif %}
+    
+
 {% endblock %}

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use App\Entity\Participation;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -45,7 +46,10 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        // dd($user->getGroupParticipations);
+        // dd($user->getUserParticipations()->getValues()[0]->getINterestGroup()->getName());
+
+        // dd($user->getUserParticipations()->getValues());
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
@@ -59,6 +63,16 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->save($user, true);
+
+            /**
+             * 
+             * The code below should assign or remove groups form the users
+             * Should look something like that. 
+            */
+            // $participation = new Participation();
+            // $participation->setInterestGroup($group);
+            // $participation->setUser($user);
+            // $participationRepository->save($participation, true);
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }

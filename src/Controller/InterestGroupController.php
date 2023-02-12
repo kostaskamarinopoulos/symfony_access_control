@@ -49,7 +49,6 @@ class InterestGroupController extends AbstractController
 
         return $this->render('interest_group/show.html.twig', [
             'interest_group' => $interestGroup,
-            'users' => ''
         ]);
     }
 
@@ -74,10 +73,15 @@ class InterestGroupController extends AbstractController
     #[Route('/{id}', name: 'app_interest_group_delete', methods: ['POST'])]
     public function delete(Request $request, InterestGroup $interestGroup, InterestGroupRepository $interestGroupRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$interestGroup->getId(), $request->request->get('_token'))) {
-            $interestGroupRepository->remove($interestGroup, true);
-        }
+        try{
 
+            if ($this->isCsrfTokenValid('delete'.$interestGroup->getId(), $request->request->get('_token'))) {
+                $interestGroupRepository->remove($interestGroup, true);
+            }
+        } catch (\Exception $e) {
+            $errorMessage = $e->getMessage();
+            // TODO show the error
+        }
         return $this->redirectToRoute('app_interest_group_index', [], Response::HTTP_SEE_OTHER);
     }
 }
