@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InterestGroup index{% endblock %}
+
+{% block body %}
+    <h1>InterestGroup index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interest_group in interest_groups %}
+            <tr>
+                <td>{{ interest_group.id }}</td>
+                <td>{{ interest_group.name }}</td>
+                <td>
+                    <a href="{{ path('app_interest_group_show', {'id': interest_group.id}) }}">show</a>
+                    <a href="{{ path('app_interest_group_edit', {'id': interest_group.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_interest_group_new') }}">Create new</a>
+    {% endif %}
+
+{% endblock %}

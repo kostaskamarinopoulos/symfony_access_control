@@ -23,11 +23,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: "user")]
+    private $userParticipations;
+
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: "user")]
+    private $groupParticipations;
 
     public function getId(): ?int
     {
@@ -98,4 +104,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * Get typeSponsor
+     *
+     * @return \Doctrine\Common\Collection\ArrayCollection
+     */
+    public function getUserParticipations() {
+        return $this->userParticipations;
+   }
 }

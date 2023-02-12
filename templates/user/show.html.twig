@@ -20,8 +20,11 @@
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
+            <th>Groups</th>
+            {% for member in user.userParticipations %}
+                <td>{{member.interestGroup.name}}</td>
+            {% endfor %}
+                
             </tr>
         </tbody>
     </table>
