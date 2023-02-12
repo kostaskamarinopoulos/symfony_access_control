@@ -15,9 +15,7 @@ class InterestGroupController extends AbstractController
 {
     #[Route('/', name: 'app_interest_group_index', methods: ['GET'])]
     public function index(InterestGroupRepository $interestGroupRepository): Response
-    {
-        
-        // dd($interestGroupRepository->findAll()[0]->getUserParticipations()->getValues()[0]->getInterestGroup()->getName());
+    {        
         return $this->render('interest_group/index.html.twig', [
             'interest_groups' => $interestGroupRepository->findAll(),
         ]);
@@ -45,8 +43,6 @@ class InterestGroupController extends AbstractController
     #[Route('/{id}', name: 'app_interest_group_show', methods: ['GET'])]
     public function show(InterestGroup $interestGroup): Response
     {
-        // dd($interestGroup->getUserParticipations()->getValues()[0]->getUser()->getName());
-
         return $this->render('interest_group/show.html.twig', [
             'interest_group' => $interestGroup,
         ]);

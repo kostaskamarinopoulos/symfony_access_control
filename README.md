@@ -1,3 +1,11 @@
+## Data
+`dummy_data.sql` can be imported in your database
+admin user: 
+name: boss, password: 123456
+
+normal user(not admin): 
+name: test, password: 123456
+
 ## DB Model
 ![My Image](DB_MODEL.png?raw=true)
 
@@ -6,3 +14,6 @@
 
 Ideally a Roles table should have been created as well.
 
+## TODO
+- Show proper error message when trying to delete a user that is assigned to a group. Currently is throwing an exception.
+- Add dunctionality to assign users to groups in the UI. Once this is done the commented lines (66-69) in `UserController` should be uncommented.
