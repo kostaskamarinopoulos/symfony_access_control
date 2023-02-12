@@ -9,16 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
 use App\Entity\Participation;
 
 #[Route('/user')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, Security $security): Response
+    public function index(UserRepository $userRepository): Response
     {
-        // dd($security->getUser());
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
@@ -46,10 +44,6 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        // dd($user->getUserParticipations()->getValues()[0]->getINterestGroup()->getName());
-
-        // dd($user->getUserParticipations()->getValues());
-
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
