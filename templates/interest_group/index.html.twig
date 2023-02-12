@@ -5,7 +5,7 @@
 {% block body %}
     <h1>InterestGroup index</h1>
 
-    <table class="table">
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
         {% for interest_group in interest_groups %}
-            <tr>
+            <tr class="item_row">
                 <td>{{ interest_group.id }}</td>
                 <td>{{ interest_group.name }}</td>
                 <td>
@@ -24,7 +24,7 @@
                 </td>
             </tr>
         {% else %}
-            <tr>
+            <tr class="item_row">
                 <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
